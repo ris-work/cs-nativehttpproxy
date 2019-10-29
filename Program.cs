@@ -6,7 +6,7 @@ using System.Net.Sockets;
 
 namespace Rishi.ProxyClient
 {
-	public class HTTPProxy
+	public class HTTPProxyClient
 	{
 		TcpClient Client=new TcpClient();
 		string Username;
