@@ -95,7 +95,7 @@ namespace Rishi.ProxyClient
 					   Y = Pos.Top (password),
 					   Width = Dim.Width (loginText)
 			};
-			var UseAuth = new CheckBox (3, 6, "Remember me");
+			var UseAuth = new CheckBox (3, 6, "Use Proxy Auth (Basic)");
 			Application.Run ();
 			Console.WriteLine("Hello World!");
 		}
