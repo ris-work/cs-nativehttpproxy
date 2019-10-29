@@ -6,4 +6,9 @@
     <RootNamespace>cs_nativehttpproxy</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Rishi.ShellBind" Version="1.2.1" />
+    <PackageReference Include="Terminal.Gui" Version="0.24.0" />
+  </ItemGroup>
+
 </Project>
