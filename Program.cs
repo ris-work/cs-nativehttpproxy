@@ -65,9 +65,9 @@ namespace Rishi.ProxyClient
 			};
 			top.Add (win);
 			var proxy = new Label ("Proxy: ") { X = 3, Y = 2 };
-			var target = new Label ("Target: ") {
+			var target = new Label ("Target:   ") {
 				X = Pos.Left (proxy),
-				  Y = Pos.Top (proxy) + 1
+				  Y = Pos.Top (proxy) + 2
 			};
 			var proxyText = new TextField ("") {
 				X = Pos.Right (target),
@@ -79,10 +79,10 @@ namespace Rishi.ProxyClient
 				  Y = Pos.Top (target),
 				  Width = Dim.Width (proxyText)
 			};
-			var login = new Label ("Login: ") { X = 3, Y = 16 };
+			var login = new Label ("Login: ") { X = 3, Y = 8 };
 			var password = new Label ("Password: ") {
 				X = Pos.Left (login),
-				  Y = Pos.Top (login) + 1
+				  Y = Pos.Top (login) + 2
 			};
 			var loginText = new TextField ("") {
 				X = Pos.Right (password),
@@ -97,9 +97,21 @@ namespace Rishi.ProxyClient
 			};
 			var UseAuth = new CheckBox (3, 6, "Use Proxy Auth (Basic)");
 			var TestBtn = new Button (3, 14, "Test");
-			var ExitBtn =            new Button (10, 14, "Exit");
+			var ExitBtn =            new Button (12, 14, "Exit", is_default: true){ Clicked = () => { Application.RequestStop (); } };
+			win.Add (
+					proxy, target, proxyText, targetText, login, password, loginText, passText, UseAuth, TestBtn, ExitBtn
+					);
+
 			Application.Run ();
 			Console.WriteLine("Hello World!");
+		}
+		void RunProxy(string Proxy, int ProxyPort, string Target){
+			try {
+				(new HTTPProxyClient(Target, Proxy, ProxyPort)).GetStream();
+			}
+			catch (Exception E){
+				MessageBox.ErrorQuery (50, 5, "Error", E.StackTrace, "OK");
+			}
 		}
 	}
 }	
