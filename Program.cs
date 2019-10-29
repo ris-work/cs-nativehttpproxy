@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.IO;
 using System.Net.Sockets;
 
-namespace cs_nativehttpproxy
+namespace Rishi.ProxyClient
 {
 	public class HTTPProxy
 	{
