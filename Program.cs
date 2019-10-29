@@ -16,13 +16,13 @@ namespace Rishi.ProxyClient
 		bool UseAuth=false;
 		string Proxy;
 		int ProxyPort;
-		HTTPProxyClient (string Target, string Proxy, int ProxyPort)
+		public HTTPProxyClient (string Target, string Proxy, int ProxyPort)
 		{
 			this.Target=Target;
 			this.Proxy=Proxy;
 			this.ProxyPort=ProxyPort;
 		}
-		HTTPProxyClient (string Target, string Proxy, int ProxyPort, string Username, string Password)
+		public HTTPProxyClient (string Target, string Proxy, int ProxyPort, string Username, string Password)
 		{
 			this.Target=Target;
 			this.Proxy=Proxy;
