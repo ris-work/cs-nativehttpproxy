@@ -79,7 +79,7 @@ namespace Rishi.ProxyClient
 					   Y = Pos.Top (target),
 					   Width = Dim.Width (proxyText)
 			};
-			var login = new Label ("Login: ") { X = 3, Y = 2 };
+			var login = new Label ("Login: ") { X = 3, Y = 16 };
 			var password = new Label ("Password: ") {
 				X = Pos.Left (login),
 				  Y = Pos.Top (login) + 1
@@ -95,6 +95,7 @@ namespace Rishi.ProxyClient
 					   Y = Pos.Top (password),
 					   Width = Dim.Width (loginText)
 			};
+			var UseAuth = new CheckBox (3, 6, "Remember me");
 			Application.Run ();
 			Console.WriteLine("Hello World!");
 		}
