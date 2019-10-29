@@ -75,9 +75,9 @@ namespace Rishi.ProxyClient
 				  Width = 40
 			};
 			var targetText = new TextField ("") {
-					   X = Pos.Left (proxyText),
-					   Y = Pos.Top (target),
-					   Width = Dim.Width (proxyText)
+				X = Pos.Left (proxyText),
+				  Y = Pos.Top (target),
+				  Width = Dim.Width (proxyText)
 			};
 			var login = new Label ("Login: ") { X = 3, Y = 16 };
 			var password = new Label ("Password: ") {
@@ -96,6 +96,8 @@ namespace Rishi.ProxyClient
 					   Width = Dim.Width (loginText)
 			};
 			var UseAuth = new CheckBox (3, 6, "Use Proxy Auth (Basic)");
+			var TestBtn = new Button (3, 14, "Test");
+			var ExitBtn =            new Button (10, 14, "Exit");
 			Application.Run ();
 			Console.WriteLine("Hello World!");
 		}
