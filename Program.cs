@@ -41,10 +41,12 @@ namespace Rishi.ProxyClient
 			byte[] Buffer=new byte[]{};
 			string AuthStr64=Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Username}:{Pass}"));
 			if(UseAuth==false) 
-				Buffer = Encoding.UTF8.GetBytes($"CONNECT {Target} HTTP/1.1\r\n");
+				Buffer = Encoding.UTF8.GetBytes($"CONNECT {Target} HTTP/1.1\r\n\r\n");
 			else
-				Buffer = Encoding.UTF8.GetBytes($"CONNECT {Target} HTTP/1.1\r\nHost: {Target}\r\nProxy-Authorization: {AuthStr64}\r\n");
+				Buffer = Encoding.UTF8.GetBytes($"CONNECT {Target} HTTP/1.1\r\nHost: {Target}\r\nProxy-Authorization: {AuthStr64}\r\n\r\n");
 			S.Write(Buffer);
+			S.Flush();
+			(new StreamReader(S)).ReadLine();
 			return S;
 		}
 	}
@@ -84,7 +86,7 @@ namespace Rishi.ProxyClient
 				  Y = Pos.Top (port),
 				  Width = 40
 			};
-			var targetText = new TextField ("") {
+			var targetText = new TextField ("google.com:443") {
 				X = Pos.Left (proxyText),
 				  Y = Pos.Top (target),
 				  Width = Dim.Width (proxyText)
@@ -106,8 +108,8 @@ namespace Rishi.ProxyClient
 					   Width = Dim.Width (loginText)
 			};
 			var UseAuth = new CheckBox (3, 6, "Use Proxy Auth (Basic)");
-			var TestBtn = new Button (3, 14, "Test"){ Clicked = () => { try{RunProxy(proxyText.Text.ToString(), Int32.Parse(portText.Text.ToString()), targetText.Text.ToString()); } finally{}} };
-			var ExitBtn =            new Button (12, 14, "Exit", is_default: true){ Clicked = () => { Application.RequestStop (); } };
+			var TestBtn = new Button (3, 14, "Test", is_default: true){ Clicked = () => { try{RunProxy(proxyText.Text.ToString(), Int32.Parse(portText.Text.ToString()), targetText.Text.ToString()); } finally{}} };
+			var ExitBtn =            new Button (12, 14, "Exit"){ Clicked = () => { Application.RequestStop (); } };
 			win.Add (
 					proxy, target, port, proxyText, portText,targetText,  login, password, loginText, passText, UseAuth, TestBtn, ExitBtn
 					);
