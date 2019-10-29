@@ -66,19 +66,18 @@ namespace Rishi.ProxyClient
 			top.Add (win);
 			var proxy = new Label ("Proxy: ") { X = 3, Y = 2 };
 			var target = new Label ("Target: ") {
-				X = Pos.Left (login),
-				  Y = Pos.Top (login) + 1
+				X = Pos.Left (proxy),
+				  Y = Pos.Top (proxy) + 1
 			};
 			var proxyText = new TextField ("") {
-				X = Pos.Right (password),
-				  Y = Pos.Top (login),
+				X = Pos.Right (target),
+				  Y = Pos.Top (proxy),
 				  Width = 40
 			};
 			var targetText = new TextField ("") {
-				Secret = true,
-					   X = Pos.Left (loginText),
-					   Y = Pos.Top (password),
-					   Width = Dim.Width (loginText)
+					   X = Pos.Left (proxyText),
+					   Y = Pos.Top (target),
+					   Width = Dim.Width (proxyText)
 			};
 			var login = new Label ("Login: ") { X = 3, Y = 2 };
 			var password = new Label ("Password: ") {
