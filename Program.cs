@@ -29,9 +29,9 @@ namespace Rishi.ProxyClient
 			this.Username=Username;
 			this.Pass=Password;
 		}
-///<summary>
-				///Get the Stream formed by the proxy.
-				///</summary>
+		///<summary>
+		///Get the Stream formed by the proxy.
+		///</summary>
 		Stream GetStream()
 		{
 			Client.Connect(Proxy, ProxyPort);
@@ -40,7 +40,7 @@ namespace Rishi.ProxyClient
 			string AuthStr64=Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Username}:{Pass}"));
 			if(UseAuth==false) 
 				Buffer = Encoding.UTF8.GetBytes($"CONNECT {Target} HTTP/1.1\r\n");
-else
+			else
 				Buffer = Encoding.UTF8.GetBytes($"CONNECT {Target} HTTP/1.1\r\nHost: {Target}\r\nProxy-Authorization: {AuthStr64}\r\n");
 			S.Write(Buffer);
 			return S;
