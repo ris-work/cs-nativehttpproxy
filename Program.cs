@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.IO;
 using System.Net.Sockets;
 using Terminal.Gui;
+using Rishi.PairStream;
 
 namespace Rishi.ProxyClient
 {
@@ -116,8 +117,11 @@ namespace Rishi.ProxyClient
 		}
 		static void RunProxy(string Proxy, int ProxyPort, string Target){
 			try {
-				(new HTTPProxyClient(Target, Proxy, ProxyPort)).GetStream();
+				Stream S = (new HTTPProxyClient(Target, Proxy, ProxyPort)).GetStream();
 				MessageBox.Query (60, 8, "No Errors.", "No Errors.", "OK");
+				pair P = new pair(new StreamReader(Console.OpenStandardInput()), new StreamWriter(Console.OpenStandardOutput()));
+				Rishi.PairStream.pair.BindStreams(P, S);
+				Application.RequestStop ();
 			}
 			catch (Exception E){
 				MessageBox.ErrorQuery (60, 8, "Error", E.Message, "OK");
