@@ -32,7 +32,7 @@ namespace Rishi.ProxyClient
 		///<summary>
 		///Get the Stream formed by the proxy.
 		///</summary>
-		Stream GetStream()
+		public Stream GetStream()
 		{
 			Client.Connect(Proxy, ProxyPort);
 			Stream S = Client.GetStream();
