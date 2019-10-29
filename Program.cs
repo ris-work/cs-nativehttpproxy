@@ -65,7 +65,11 @@ namespace Rishi.ProxyClient
 			};
 			top.Add (win);
 			var proxy = new Label ("Proxy: ") { X = 3, Y = 2 };
-			var target = new Label ("Target:   ") {
+			var port = new Label ("Prox.Port.: ") {
+				X = Pos.Left (proxy),
+				  Y = Pos.Top (proxy) + 1
+			};
+			var target = new Label ("Target:     ") {
 				X = Pos.Left (proxy),
 				  Y = Pos.Top (proxy) + 2
 			};
@@ -74,13 +78,18 @@ namespace Rishi.ProxyClient
 				  Y = Pos.Top (proxy),
 				  Width = 40
 			};
+			var portText = new TextField ("") {
+				X = Pos.Right (target),
+				  Y = Pos.Top (port),
+				  Width = 40
+			};
 			var targetText = new TextField ("") {
 				X = Pos.Left (proxyText),
 				  Y = Pos.Top (target),
 				  Width = Dim.Width (proxyText)
 			};
 			var login = new Label ("Login: ") { X = 3, Y = 8 };
-			var password = new Label ("Password: ") {
+			var password = new Label ("Password:   ") {
 				X = Pos.Left (login),
 				  Y = Pos.Top (login) + 2
 			};
@@ -96,21 +105,22 @@ namespace Rishi.ProxyClient
 					   Width = Dim.Width (loginText)
 			};
 			var UseAuth = new CheckBox (3, 6, "Use Proxy Auth (Basic)");
-			var TestBtn = new Button (3, 14, "Test");
+			var TestBtn = new Button (3, 14, "Test"){ Clicked = () => { try{RunProxy(proxyText.Text.ToString(), Int32.Parse(portText.Text.ToString()), targetText.Text.ToString()); } finally{}} };
 			var ExitBtn =            new Button (12, 14, "Exit", is_default: true){ Clicked = () => { Application.RequestStop (); } };
 			win.Add (
-					proxy, target, proxyText, targetText, login, password, loginText, passText, UseAuth, TestBtn, ExitBtn
+					proxy, target, port, proxyText, portText,targetText,  login, password, loginText, passText, UseAuth, TestBtn, ExitBtn
 					);
 
 			Application.Run ();
 			Console.WriteLine("Hello World!");
 		}
-		void RunProxy(string Proxy, int ProxyPort, string Target){
+		static void RunProxy(string Proxy, int ProxyPort, string Target){
 			try {
 				(new HTTPProxyClient(Target, Proxy, ProxyPort)).GetStream();
+				MessageBox.Query (60, 8, "No Errors.", "No Errors.", "OK");
 			}
 			catch (Exception E){
-				MessageBox.ErrorQuery (50, 5, "Error", E.StackTrace, "OK");
+				MessageBox.ErrorQuery (60, 8, "Error", E.Message, "OK");
 			}
 		}
 	}
