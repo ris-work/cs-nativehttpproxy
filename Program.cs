@@ -29,6 +29,9 @@ namespace Rishi.ProxyClient
 			this.Username=Username;
 			this.Pass=Password;
 		}
+///<summary>
+				///Get the Stream formed by the proxy.
+				///</summary>
 		Stream GetStream()
 		{
 			Client.Connect(Proxy, ProxyPort);
