@@ -79,7 +79,7 @@ namespace Rishi.ProxyClient
 				  Y = Pos.Top (proxy),
 				  Width = 40
 			};
-			var portText = new TextField ("") {
+			var portText = new TextField ("3128") {
 				X = Pos.Right (target),
 				  Y = Pos.Top (port),
 				  Width = 40
