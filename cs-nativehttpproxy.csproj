@@ -22,7 +22,7 @@ HTTP Proxy support for C# using System.Net.TcpClient. Expected to work on all Ne
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 <projectUrl>https://ris.rocks/</projectUrl>
 <PackageprojectUrl>https://ris.fi/</PackageprojectUrl>
-<RepositoryUrl>https://github.com/ris-public/cs-proxy</RepositoryUrl>
+<RepositoryUrl>https://github.com/ris-public/cs-nativehttpproxy</RepositoryUrl>
 <PackageIconUrl>https://ris.rocks/favicon.ico</PackageIconUrl>
 <IncludeSource>true</IncludeSource>
 <PackageIcon>icon.png</PackageIcon>
