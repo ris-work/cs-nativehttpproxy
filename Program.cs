@@ -49,8 +49,12 @@ namespace Rishi.ProxyClient
 			S.Flush();
 			Regex R = new Regex("200");
 			if ((R.Match((new StreamReader(S)).ReadLine())).Success)
+			{	
 				return S;
-			else return null;
+			}
+			else {
+				return null;
+			}
 		}
 	}
 	class Program
