@@ -47,7 +47,7 @@ namespace Rishi.ProxyClient
 				Buffer = Encoding.UTF8.GetBytes($"CONNECT {Target} HTTP/1.1\r\nHost: {Target}\r\nProxy-Authorization: {AuthStr64}\r\n\r\n");
 			S.Write(Buffer);
 			S.Flush();
-			Regex R = new Regex("200");
+			Regex R = new Regex("OK");
 			if ((R.Match((new StreamReader(S)).ReadLine())).Success)
 				return S;
 			else return null;
@@ -112,7 +112,7 @@ namespace Rishi.ProxyClient
 			};
 			var UseAuth = new CheckBox (3, 6, "Use Proxy Auth (Basic)");
 			var TestBtn = new Button (3, 14, "Test", is_default: true){ Clicked = () => { try{RunProxy(proxyText.Text.ToString(), Int32.Parse(portText.Text.ToString()), targetText.Text.ToString()); } finally{}} };
-			var ExitBtn =            new Button (12, 14, "Exit"){ Clicked = () => { Application.RequestStop (); } };
+			var ExitBtn =            new Button (14, 14, "Exit"){ Clicked = () => { Application.RequestStop (); } };
 			win.Add (
 					proxy, target, port, proxyText, portText,targetText,  login, password, loginText, passText, UseAuth, TestBtn, ExitBtn
 					);
