@@ -3,8 +3,10 @@ using System.Text;
 using System.Net.Http;
 using System.IO;
 using System.Net.Sockets;
+#if NETCOREAPP || NETFRAMEWORK
 using Terminal.Gui;
 using Rishi.PairStream;
+#endif
 using System.Text.RegularExpressions;
 
 namespace Rishi.ProxyClient
@@ -61,6 +63,7 @@ namespace Rishi.ProxyClient
 	{
 		static void Main(string[] args)
 		{
+#if NETCOREAPP || NETFRAMEWORK
 			Application.Init ();
 			var top = Application.Top;
 
@@ -135,6 +138,7 @@ namespace Rishi.ProxyClient
 			catch (Exception E){
 				MessageBox.ErrorQuery (60, 8, "Error", E.Message, "OK");
 			}
+#endif
 		}
 	}
 }	

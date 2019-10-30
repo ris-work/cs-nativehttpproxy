@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
     <RootNamespace>cs_nativehttpproxy</RootNamespace>
   </PropertyGroup>
 
@@ -11,4 +10,29 @@
     <PackageReference Include="Terminal.Gui" Version="0.24.0" />
   </ItemGroup>
 
+  <PropertyGroup>
+<PackageId>Rishi.Proxy.NativeHTTPProxyClient</PackageId>
+<Version>0.3.0-stable</Version>
+<Authors>Rishikeshan L.</Authors>
+<Company>N/A</Company>
+<PackageTags>Proxy;HTTP Connect</PackageTags>
+<Description>
+HTTP Proxy support for C# using System.Net.TcpClient. Expected to work on all NetStandard platforms.
+</Description>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+<projectUrl>https://ris.rocks/</projectUrl>
+<PackageprojectUrl>https://ris.fi/</PackageprojectUrl>
+<RepositoryUrl>https://github.com/ris-public/cs-proxy</RepositoryUrl>
+<PackageIconUrl>https://ris.rocks/favicon.ico</PackageIconUrl>
+<IncludeSource>true</IncludeSource>
+<PackageIcon>icon.png</PackageIcon>
+<Copyright>Copyright © [2019] RISHIKESHAN LAVAKUMAR "github-public [at] ris.fi"
+</Copyright>
+<TargetFrameworks>netstandard2.1;netcoreapp2.2</TargetFrameworks>
+<GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
 </Project>
