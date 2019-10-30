@@ -36,6 +36,7 @@ namespace Rishi.ProxyClient
 		}
 		///<summary>
 		///Get the Stream formed by the proxy.
+		///If HTTP 200 is not received from the proxy, null.
 		///</summary>
 		public Stream GetStream()
 		{
