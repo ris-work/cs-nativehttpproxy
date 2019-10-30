@@ -47,7 +47,7 @@ namespace Rishi.ProxyClient
 				Buffer = Encoding.UTF8.GetBytes($"CONNECT {Target} HTTP/1.1\r\nHost: {Target}\r\nProxy-Authorization: {AuthStr64}\r\n\r\n");
 			S.Write(Buffer);
 			S.Flush();
-			Regex R = new Regex("OK");
+			Regex R = new Regex("200");
 			if ((R.Match((new StreamReader(S)).ReadLine())).Success)
 				return S;
 			else return null;
