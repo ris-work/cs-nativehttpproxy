@@ -50,9 +50,11 @@ namespace Rishi.ProxyClient
 			Regex R = new Regex("200");
 			if ((R.Match((new StreamReader(S)).ReadLine())).Success)
 			{	
+				MessageBox.Query (60, 8, "All OK!", "OK!", "OK");
 				return S;
 			}
 			else {
+				MessageBox.ErrorQuery (60, 8, "Error", "Connection Unsuccessful", "OK");
 				return null;
 			}
 		}
@@ -138,3 +140,4 @@ namespace Rishi.ProxyClient
 		}
 	}
 }	
+
