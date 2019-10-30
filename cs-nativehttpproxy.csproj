@@ -12,7 +12,7 @@
 
   <PropertyGroup>
 <PackageId>Rishi.Proxy.NativeHTTPProxyClient</PackageId>
-<Version>0.3.0-stable</Version>
+<Version>0.3.1-stable</Version>
 <Authors>Rishikeshan L.</Authors>
 <Company>N/A</Company>
 <PackageTags>Proxy;HTTP Connect</PackageTags>
