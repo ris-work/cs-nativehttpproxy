@@ -5,6 +5,7 @@ using System.IO;
 using System.Net.Sockets;
 using Terminal.Gui;
 using Rishi.PairStream;
+using System.Text.RegularExpressions;
 
 namespace Rishi.ProxyClient
 {
@@ -46,8 +47,10 @@ namespace Rishi.ProxyClient
 				Buffer = Encoding.UTF8.GetBytes($"CONNECT {Target} HTTP/1.1\r\nHost: {Target}\r\nProxy-Authorization: {AuthStr64}\r\n\r\n");
 			S.Write(Buffer);
 			S.Flush();
-			(new StreamReader(S)).ReadLine();
-			return S;
+			Regex R = new Regex("200");
+			if ((R.Match((new StreamReader(S)).ReadLine())).Success)
+				return S;
+			else return null;
 		}
 	}
 	class Program
